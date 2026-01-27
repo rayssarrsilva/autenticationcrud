@@ -22,3 +22,7 @@ erros.txt
 # Configurações de IDE
 .vscode/
 .idea/
+
+.env
+.env.*
+!*.example
