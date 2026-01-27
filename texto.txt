@@ -1,0 +1,5 @@
+cd flask_auth_project
+venv\Scripts\activate
+python app.py
+
+InterfaceAutentication is a secure web application for user registration, login, logout, and password reset via email tokens.

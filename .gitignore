@@ -1,0 +1,24 @@
+# Arquivos de cache do Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ambiente virtual
+venv/
+*.env
+
+# Configurações locais e banco de dados
+*.sqlite3
+instance/
+migrations/
+
+# Logs
+*.log
+erros.txt
+
+# Arquivos do sistema
+.DS_Store
+
+# Configurações de IDE
+.vscode/
+.idea/

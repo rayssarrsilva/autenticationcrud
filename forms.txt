@@ -1,0 +1,154 @@
+🔹 Casos que precisam feedback (mensagens)
+Registro
+Sucesso: conta criada.
+
+Erro: e‑mail já cadastrado.
+
+Erro: usuário já existe.
+
+Erro: senha fraca ou inválida.
+
+Erro: campos obrigatórios não preenchidos.
+
+Login
+Sucesso: login realizado.
+
+Erro: e‑mail não encontrado.
+
+Erro: senha incorreta.
+
+Erro: campos obrigatórios não preenchidos.
+
+Reset de senha (request)
+Sucesso: e‑mail enviado com instruções.
+
+Erro: e‑mail não encontrado.
+
+Erro: falha no envio de e‑mail.
+
+Erro: campos obrigatórios não preenchidos.
+
+Reset de senha (token)
+Sucesso: senha atualizada.
+
+Erro: token inválido.
+
+Erro: token expirado.
+
+Erro: usuário não encontrado.
+
+Erro: senha fraca ou inválida.
+
+Erro: campos obrigatórios não preenchidos.
+
+Se o usuário digitar e‑mail inválido → aparece mensagem abaixo do campo e alerta.
+
+Se senha não atender critérios → aparece mensagem abaixo do campo e alerta.
+
+Se campos obrigatórios não forem preenchidos → aparece mensagem clara.
+
+Se tudo der certo → aparece alerta de sucesso.
+-------------------------------------------------------
+Refatoração com foco em validação e segurança
+Correção preventiva de bugs
+Implementação de boas práticas de desenvolvimento seguro
+
+🔹 O que já foi implementado
+Separação de Configuração (config.py)
+Centralizamos variáveis sensíveis (SECRET_KEY, MAIL, DB).
+Criamos método validate() para garantir que variáveis essenciais existem antes de rodar.
+Evita bugs de ambiente e exposição indevida.
+Validações mais fortes nos formulários (forms.py)
+Senhas agora exigem:
+Mínimo de 8 caracteres.
+Letra maiúscula, minúscula, número e caractere especial.
+Campos de e‑mail e usuário com limites de tamanho e unicidade.
+Mensagens de erro mais claras para o usuário.
+Refatoração do app.py
+Registro: checa duplicidade de e‑mail e username antes de salvar.
+Login: mensagens de erro seguras, sem revelar detalhes.
+Reset de senha:
+Tokens tratados com exceções específicas (SignatureExpired, BadSignature).
+Checagem se usuário existe antes de atualizar senha.
+Envio de e‑mail protegido com try/except e logging de erros.
+API:
+Valida entradas JSON.
+Retorna mensagens adequadas para duplicidade e dados inválidos.
+Logout: protegido com login_required.
+Boas práticas de segurança
+CSRF já ativo via Flask‑WTF.
+Debug não deve ser usado em produção.
+Logging de erros implementado para falhas críticas.
+Evitamos exposição de dados sensíveis em mensagens.
+
+
+Correções preventivas de bugs: checagem de duplicidade, validação de variáveis de ambiente, tratamento de exceções.
+Validações robustas: senhas fortes, e‑mail válido, limites de tamanho.
+Boas práticas de segurança: CSRF, logging, tokens com expiração, não usar debug em produção.
+Resistência a falhas externas: envio de e‑mail protegido, checagem de configuração antes de usar.
+
+
+🔹 4. Proteção contra XSS e CSRF
+CSRF já está ativo via Flask‑WTF (form.hidden_tag()).
+XSS: Jinja2 escapa variáveis por padrão ({{ current_user.username }} é seguro).
+Nunca usar |safe em dados vindos do usuário.
+
+✅ Bloqueio de conta após falhas de login (failed_attempts e is_locked).
+
+✅ Reset de senha desbloqueia conta automaticamente.
+
+✅ Headers de segurança registrados corretamente com @app.after_request.
+
+✅ Debug desativado para evitar exposição de informações sensíveis.
+
+✅ Cookies protegidos já configurados no config.py (mantém).
+
+-------------------
+BANCO
+
+Por padrão, no seu config.py, usamos SQLite:
+
+python
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'sqlite:///site.db')
+Ou seja, se você não configurar outra URI no .env, o banco será um arquivo site.db dentro da pasta instance/.
+
+👉 Vantagem: simples, roda local sem precisar instalar nada.
+👉 Em produção: pode trocar para Postgres ou MySQL apenas alterando a variável DATABASE_URL no .env.
+
+----
+SQL Injection: protegido, porque usamos SQLAlchemy ORM (não concatenamos strings).
+
+Senhas: armazenadas com hash seguro (generate_password_hash → PBKDF2).
+
+Campos extras: ajudam a mitigar brute force (bloqueio de conta).
+
+Criptografia do banco: SQLite não criptografa por padrão. Em produção, ideal usar Postgres/MySQL com criptografia em disco.
+------ 
+APLICAR MUDANÇA BANCO DE DADOS 
+🔹 Como alterar (quando muda o modelo)
+Exemplo: adicionamos failed_attempts e is_locked.
+
+Gerar nova migration:
+
+bash
+flask db migrate -m "add security fields to User"
+Aplicar:
+
+bash
+flask db upgrade
+------------
+🔹 Como criar o banco
+Inicializar migrations (se ainda não fez):
+
+bash
+flask db init
+Criar migration:
+
+bash
+flask db migrate -m "create user table"
+Aplicar migration:
+
+bash
+flask db upgrade
+Isso cria o arquivo site.db com a tabela User.
+-----------

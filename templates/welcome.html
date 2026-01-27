@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Bem-vinda, Rayssa ✨{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">🌸 Olá, {{ current_user.username }} 🌸</h1>
+<p>Você está logada! Aproveite este cantinho coquette cheio de charme 💕</p>
+
+<div class="mt-4">
+    <i class="material-icons icon-animate pulse">favorite</i>
+    <i class="material-icons icon-animate pulse">star</i>
+    <i class="material-icons icon-animate pulse">pets</i>
+</div>
+
+<section class="mt-4 text-start mx-auto" style="max-width:700px;">
+    <h2 class="mb-3">📝 Blog fofinho</h2>
+    <article class="p-3 mb-3 rounded shadow-sm article-animate" style="background:#fff;">
+        <h3>🍡 Inspiração japonesa</h3>
+        <p>Estilo coquette + kawaii = delicadeza e cores suaves.</p>
+    </article>
+    <article class="p-3 mb-3 rounded shadow-sm article-animate" style="background:#fff;">
+        <h3>🍥 Cultura pop</h3>
+        <p>Animes, mangás e música J-pop são paixões que inspiram looks e acessórios.</p>
+    </article>
+    <article class="p-3 mb-3 rounded shadow-sm article-animate" style="background:#fff;">
+        <h3>🍵 Chá e doces</h3>
+        <p>Momentos de pausa com chá verde e docinhos delicados.</p>
+    </article>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Ícones fofos que pulsam e mudam de cor
+    document.querySelectorAll(".pulse").forEach(icon => {
+        icon.addEventListener("mouseenter", () => {
+            icon.style.color = "#e83e8c"; // rosa fofo
+            icon.classList.add("bounce");
+        });
+        icon.addEventListener("mouseleave", () => {
+            icon.style.color = ""; // volta ao padrão
+            icon.classList.remove("bounce");
+        });
+    });
+
+    // Artigos que giram ao clicar
+    document.querySelectorAll(".article-animate").forEach(article => {
+        article.addEventListener("click", () => {
+            article.style.transition = "transform 0.6s ease";
+            article.style.transform = "rotateY(360deg)";
+            setTimeout(() => article.style.transform = "rotateY(0deg)", 600);
+        });
+    });
+});
+</script>
+{% endblock %}

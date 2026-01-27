@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Início{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1 id="welcome-text">🌸 Bem-vinda ao sistema 🌸</h1>
+    <p>Escolha uma opção para começar:</p>
+    <i class="material-icons icon-animate">favorite</i>
+    <i class="material-icons icon-animate">star</i>
+    <br><br>
+    <a href="{{ url_for('login') }}" class="btn btn-primary m-2">Entrar</a>
+    <a href="{{ url_for('register') }}" class="btn btn-success m-2">Registrar</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    // efeito de digitação
+    const text = "🌸 Bem-vinda ao sistema 🌸";
+    let i = 0;
+    const el = document.getElementById("welcome-text");
+    el.textContent = "";
+    const interval = setInterval(() => {
+        el.textContent += text[i];
+        i++;
+        if (i >= text.length) clearInterval(interval);
+    }, 100);
+});
+</script>
+{% endblock %}
