@@ -1,4 +1,6 @@
-![autenticacaosimples](https://github.com/user-attachments/assets/c76bae72-9702-4c67-96f0-99f014bfdfa8)# 🌸 Flask Coquette System ✨
+![autenticacaosimples](https://github.com/user-attachments/assets/c76bae72-9702-4c67-96f0-99f014bfdfa8)
+
+# 🌸 Flask Coquette System ✨
 
 ## 📖 Overview
 A **Flask-based web application** designed with a strong focus on **security, user experience, and kawaii-inspired design**.  
