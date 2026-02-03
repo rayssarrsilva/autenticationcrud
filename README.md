@@ -95,18 +95,24 @@ Example JSON responses:
 ---
 
 ## 🚀 Deployment
-- **Platform:** Render.com  
-- **WSGI Server:** Gunicorn  
-- **Environment Variables:**  
-  - `SECRET_KEY`  
-  - `DATABASE_URL`  
-  - `MAIL_USERNAME`  
-  - `MAIL_PASSWORD`  
-- **Production Notes:**  
-  - Debug disabled (`debug=False`)  
-  - HTTPS enforced with HSTS header  
-  - Logs monitored for email errors  
+- **Platform: Render.com**
 
+- **WSGI Server: Gunicorn**
+
+- **Environment Variables**:
+- SECRET_KEY
+- DATABASE_URL
+- MAIL_SERVER
+- MAIL_PORT
+- MAIL_USE_TLS
+- MAIL_USERNAME
+- MAIL_PASSWORD
+- BREVO_API_KEY
+
+**Production Notes**:
+- Debug desativado (debug=False)
+- HTTPS forçado com HSTS
+- Logs monitorados para erros de email 
 ---
 
 ## 📂 Project Structure
