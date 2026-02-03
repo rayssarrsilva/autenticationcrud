@@ -1,4 +1,4 @@
-# 🌸 Flask Coquette System ✨
+# 🌸 Flask System ✨
 
 ![autenticacaosimples](https://github.com/user-attachments/assets/c76bae72-9702-4c67-96f0-99f014bfdfa8)
 
