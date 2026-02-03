@@ -12,18 +12,25 @@ It provides:
 ---
 
 ## 🏗️ Architecture
-- **Framework:** Flask (Python)  
-- **ORM:** SQLAlchemy  
-- **Authentication:** Flask-Login  
-- **Forms & Validation:** WTForms  
-- **Email Service:** Flask-Mail  
-- **Token Management:** itsdangerous (URLSafeTimedSerializer)  
-- **Migrations:** Flask-Migrate  
-- **Frontend:** Jinja2 templates with inheritance (`base.html`)  
-- **Styling:** Bootstrap 5, Google Fonts (`Inter`, `Poppins`), Font Awesome, Material Icons  
-- **Animations:** CSS keyframes + JavaScript interactions  
-- **Flash Messages:** SweetAlert2  
+- **Framework**: Flask (Python)
 
+- **ORM**: SQLAlchemy
+
+- **Autenticação**: Flask-Login
+
+- **Forms & Validation**: WTForms
+
+- **Email Service: Brevo API (via requests)**
+
+- **Token Management**: itsdangerous (URLSafeTimedSerializer)
+
+- **igrations**: Flask-Migrate
+
+- **Frontend: Jinja2 templates com herança (base.html)**
+
+- **Styling: Bootstrap 5, Google Fonts (Inter, Poppins), Font Awesome, Material Icons**
+
+- **Mensagens Flash**: SweetAlert2
 ---
 
 ## 🗄️ Database
