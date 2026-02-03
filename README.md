@@ -46,15 +46,23 @@ It provides:
 ---
 
 ## 🔐 Security
-- **Password Hashing:** `generate_password_hash` and `check_password_hash`  
-- **CSRF Protection:** `form.hidden_tag()` in all forms  
-- **Token-based Reset:** `itsdangerous.URLSafeTimedSerializer` with expiration  
-- **Secure Headers:**  
-  - `X-Content-Type-Options: nosniff`  
-  - `X-Frame-Options: DENY`  
-  - `Strict-Transport-Security: max-age=31536000; includeSubDomains`  
-  - `Content-Security-Policy: default-src 'self'`  
-- **Error Logging:** Email sending errors logged with `app.logger.error`  
+- **Password Hashing**: `generate_password_hash e check_password_hash`
+
+- **CSRF Protection**: `form.hidden_tag()` in all forms
+
+- **Token-based Reset**: itsdangerous.URLSafeTimedSerializer with expiration
+
+- **Secure Headers**:
+
+- **X-Content-Type-Options**: nosniff
+
+- **X-Frame-Options**: DENY
+
+- **Strict-Transport-Security**: `max-age=31536000; includeSubDomains`
+
+- **Content-Security-Policy**: `default-src 'self'`
+
+- **Error Logging**: error sending email logged in with `app.logger.error`
 
 ---
 
