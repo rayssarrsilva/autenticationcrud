@@ -1,5 +1,7 @@
 # 🌸 Flask Coquette System ✨
 
+![Uploading autenticacaosimples.gif…]()
+
 ## 📖 Overview
 A **Flask-based web application** designed with a strong focus on **security, user experience, and kawaii-inspired design**.  
 It provides:
