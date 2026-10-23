@@ -16,7 +16,6 @@ app = Flask(__name__)
 app.config.from_object(Config)
 Config.validate()
 
-env = os.environ.get("FLASK_ENV", "development") if env == "development": load_dotenv(".env.development") else: load_dotenv(".env.production")
 db = SQLAlchemy(app)
 #mail = Mail(app)
 s = URLSafeTimedSerializer(app.config['SECRET_KEY'])
